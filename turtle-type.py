@@ -4,22 +4,26 @@ from random import randrange, choice
 from math import *
 
 DELAY = 10
-CSPREAD = 250
+CSPREAD = 1
 COLORS = []
 
 def f1():
     t.speed(15)
     t.color('black')
     for _ in range(sn):
-        t.begin_fill()
-        angl = 38
+        angl = randrange(20, 150)
         t.setpos(randrange(-CSPREAD, CSPREAD), randrange(-CSPREAD, CSPREAD))
+        t.begin_fill()
+        t.pendown()
         screen_save(step, angl, randrange(depth // 2, depth * 3))
+        t.penup()
 
+    t.penup()
     t.end_fill()
     t.color('white')
     t.setpos(-t.window_width(), t.window_height())
     t.setheading(0)
+    t.pendown()
     t.begin_fill()
     for _ in range(8):
         t.begin_fill()
@@ -120,7 +124,7 @@ for line in f:
 
 
 depth = 3
-sn = 75
+sn = 10
 step = 300
 angl = 60
 
